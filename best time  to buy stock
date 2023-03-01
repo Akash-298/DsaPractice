@@ -1,0 +1,86 @@
+//Enter code here
+import java.util.*;
+import java.io.*;
+class Main{
+    static class FastReader
+  {
+    BufferedReader br;
+    StringTokenizer st;
+    public FastReader()
+    {
+      br = new BufferedReader(new InputStreamReader(System.in));
+    }
+    String next()
+    {
+      while (st == null || !st.hasMoreElements()){
+        try { st = new StringTokenizer(br.readLine()); }
+        catch (IOException e) { e.printStackTrace(); }
+      }
+      return st.nextToken();
+    }
+    int nextInt() { return Integer.parseInt(next()); }
+    long nextLong() { return Long.parseLong(next()); }
+    double nextDouble(){ return Double.parseDouble(next()); }
+    String nextLine(){
+      String str = "";
+      try { str = br.readLine(); }
+      catch (IOException e) { e.printStackTrace(); }
+      return str;
+    }
+  }
+  public static void main(String[] args){
+       Scanner sc = new Scanner(System.in);
+       int tc = sc.nextInt();
+       for(int ii=0;ii<tc;ii++){
+      int n = sc.nextInt();
+    //   int k = sc.nextInt();
+      int[] a = new int[n];
+      
+      for(int i=0;i<n;i++){
+          a[i] = sc.nextInt();
+      }
+     System.out.println(callW(a,n));
+
+    }
+  }
+  
+   public static int callW(int[] a,int n){
+       int pro=0;
+    //   int ind = -1;
+   
+       int smallest = Integer.MAX_VALUE;
+       for(int i=0;i<n;i++){
+           if(a[i]<smallest){
+               smallest = a[i];
+           
+           }
+           int cu = a[i]- smallest;
+           if(cu>pro){
+               pro = cu;
+           }
+           
+           
+       }
+    //   for(int i=ind;i<n;i++){
+    //       if(a[i] - smallest > pro){
+    //           pro = a[i]-smallest;
+    //       }
+    //   }
+       return pro;
+       
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
