@@ -1,0 +1,10 @@
+We can use a stack to store characters of the string.
+Then we can do two things:
+1. if char is open bracket (i.e. '(' or '{' or '[') then push it in stack.
+2. if char is closed bracket therefore we can check the following conditions:
+
+   1: if '{' is before '}'.
+   2: if '(' is before ')'.
+   3: if '[' is before ']'.
+
+   If any condition is false then return false.
