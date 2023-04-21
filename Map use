@@ -1,0 +1,29 @@
+public class RemoveDuplicatesUsingMap {
+    public static void main(String[] args) {
+        String inputString = "Akash Chikhalonde";
+        
+        // Create a new LinkedHashMap to preserve the order of characters
+        Map<Character, Integer> charMap = new LinkedHashMap<>();
+        
+        // Iterate over each character in the string
+        for (int i = 0; i < inputString.length(); i++) {
+            char c = inputString.charAt(i);
+            
+            // If the character is not already in the map, add it with a value of 1
+            if (!charMap.containsKey(c)) {
+                charMap.put(c, 1);
+            }
+        }
+        
+        // Use a StringBuilder to build the output string without duplicates
+        StringBuilder sb = new StringBuilder(charMap.size());
+        
+        // Iterate over the keys of the map and append them to the StringBuilder
+        for (Character c : charMap.keySet()) {
+            sb.append(c);
+        }
+        
+        // Print the output string
+        System.out.println(sb.toString());
+    }
+}
