@@ -1,0 +1,24 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class RemoveComments {
+    public static void main(String[] args) {
+        String inputFile = "input.java";
+        String outputFile = "output.java";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+             FileWriter writer = new FileWriter(outputFile)) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                line = line.replaceAll("//.*|/\\*.*?\\*/", "");
+                if (!line.trim().isEmpty()) {
+                    writer.write(line + System.lineSeparator());
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
