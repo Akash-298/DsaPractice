@@ -1,0 +1,20 @@
+public static int maxDiff(int[] arr) {
+    if (arr.length < 2) {
+        return 0;
+    }
+    
+    int minElem = arr[0];
+    int maxDiff = 0;
+    
+    for (int i = 1; i < arr.length; i++) {
+        int diff = arr[i] - minElem;
+        if (diff > maxDiff) {
+            maxDiff = diff;
+        }
+        if (arr[i] < minElem) {
+            minElem = arr[i];
+        }
+    }
+    
+    return maxDiff;
+}
