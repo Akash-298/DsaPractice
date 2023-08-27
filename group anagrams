@@ -1,0 +1,11 @@
+var groupAnagrams = function(A) {
+    const x = 'a'.charCodeAt(0);
+    const M = {};
+    for (let a of A) {
+        const C = new Array(26).fill(0);
+        for (let c of a) ++C[c.charCodeAt(0) - x];
+        if (!M[C]) M[C] = [];
+        M[C].push(a);
+    }
+    return Object.values(M);
+};
