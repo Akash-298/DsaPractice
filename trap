@@ -1,0 +1,80 @@
+var trap = function(height) {
+        if(height <= 1) {
+            return 0
+        }
+        else {let max = Math.max.apply(null, height);
+        let indexsmax = [];
+        let srez = [];
+        let startval = 0;
+        let centerval = 0;
+        let endval = 0;
+        let x = 0;
+        let y = 0;
+
+        for (i in height){
+            
+            if (height[i] == max){
+                indexsmax.push(Number(i));
+            };
+        };
+        indexsmax.unshift(0);
+        indexsmax.push(height.length);
+        let len = indexsmax.length;
+
+        for (let i=0; i<len; i++){
+            srez.push(height.slice(indexsmax[i], indexsmax[i+1]));
+            if ( i != len-1){
+                srez[i].push(max);
+            }
+        };
+        srez.at(-1);
+        
+        let xyu =srez.at(-1);
+        if (xyu.length <=2 ) {
+            srez.pop();
+        };
+
+        srez.at(-1).pop();
+
+        if (srez.at(-1).length == 1){
+            srez.splice(srez.length - 1);
+        }
+        
+        if(srez[0].length == 1){
+            srez.shift();
+        }
+        let end = new Array();
+        let start = srez.shift();
+        if (srez.length !== 0){
+            end = srez.pop();
+        };
+        
+        if (start.at(-1) != max){
+            start = start.reverse();
+        }
+
+        for (let i = 0; i< start.length; i ++){
+            if ( start[i] >= x){
+                x = start[i];
+            }else {
+                startval = x - start[i] + startval;
+            }
+        };
+
+        end = end.reverse();
+
+        for (let i = 0; i< end.length; i ++){
+            if ( end[i] >= y){
+                y = end[i];
+            }else {
+                endval = y - end[i] + endval;
+            };
+        };
+        for (let i = 0; i < srez.length; i++) {
+                    let node = srez[i];
+                    for( let t =0; t < node.length; t++){  
+                        centerval = max - node[t] + centerval
+                    }
+                };
+        let ans = startval+centerval+endval;
+        return ans
