@@ -1,0 +1,11 @@
+function maxSubarraySum(array) {
+  let maxSoFar = 0;
+  let currentMax = 0;
+
+  for (const element of array) {
+    currentMax = Math.max(currentMax + element, 0);
+    maxSoFar = Math.max(maxSoFar, currentMax);
+  }
+
+  return maxSoFar;
+}
